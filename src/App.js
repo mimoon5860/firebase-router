@@ -8,11 +8,12 @@ import SignUp from './Components/SignUp/SignUp';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import Error from './Components/Error/Error';
 import Footer from './Components/Footer/Footer';
+import AuthProvidor from './Context/AuthProvidor';
 function App() {
   return (
-    <div>
+    <AuthProvidor>
       <Router>
-        <header className="App">
+        <div className="App">
           <Header></Header>
           <Switch>
             <Route exact path='/'>
@@ -34,10 +35,10 @@ function App() {
               <Error></Error>
             </Route>
           </Switch>
-        </header>
+        </div>
         <Footer></Footer>
       </Router>
-    </div >
+    </AuthProvidor>
   );
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import UseFirebase from '../../useFirebase/useFirebase';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { user, signInWithGoogle } = UseFirebase();
+    const { user, signInWithGoogle } = useAuth();
     const handleGoogleSignIn = () => {
         signInWithGoogle();
     }
@@ -34,9 +34,7 @@ const Login = () => {
                 <button onClick={handleGoogleSignIn}>Login with Google</button>
                 <button>Login with Facebook</button>
             </div> : <div className='text-white text-center'> <h1 className='text-success'>Login Successfull</h1>
-                <h1>Welcome {user.displayName}</h1>
-                <img src={user.photoURL} alt="" />
-                <h3>Your Email Address: {user.email}</h3>
+                <h3>You Already Logged in</h3>
             </div>}
 
 
