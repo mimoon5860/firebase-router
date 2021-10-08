@@ -1,11 +1,16 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import UseFirebase from '../../useFirebase/useFirebase';
 
 const Login = () => {
+    const { user, signInWithGoogle } = UseFirebase();
+    const handleGoogleSignIn = () => {
+        signInWithGoogle();
+    }
     return (
         <div>
-            <Form className='mx-auto w-25 text-white mt-5 border p-4 rounded'>
+            {!user.email ? <div className='mx-auto w-25 text-white mt-5 border p-4 rounded'>
                 <h2>Please Login</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -19,11 +24,23 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
-                <Link to='/forgotpassword' className='ms-5'>Lost Password?</Link>
-            </Form>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
+                    <Link to='/forgotpassword' className='ms-5'>Lost Password?</Link>
+                    <Link to='/signup' className='ms-5'>New user?</Link>
+                </Form.Group>
+                <button onClick={handleGoogleSignIn}>Login with Google</button>
+                <button>Login with Facebook</button>
+            </div> : <div className='text-white text-center'> <h1 className='text-success'>Login Successfull</h1>
+                <h1>Welcome {user.displayName}</h1>
+                <img src={user.photoURL} alt="" />
+                <h3>Your Email Address: {user.email}</h3>
+            </div>}
+
+
+
         </div>
     );
 };
