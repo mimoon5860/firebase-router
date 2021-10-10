@@ -9,6 +9,8 @@ import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import Error from './Components/Error/Error';
 import Footer from './Components/Footer/Footer';
 import AuthProvidor from './Context/AuthProvidor';
+import PrivateRouter from './Components/PrivateRouter/PrivateRouter';
+import PrivatePage from './Components/PrivatePage/PrivatePage';
 function App() {
   return (
     <AuthProvidor>
@@ -31,6 +33,9 @@ function App() {
             <Route path='/forgotpassword'>
               <ForgotPassword></ForgotPassword>
             </Route>
+            <PrivateRouter path='/privatepage'>
+              <PrivatePage></PrivatePage>
+            </PrivateRouter>
             <Route path='*'>
               <Error></Error>
             </Route>

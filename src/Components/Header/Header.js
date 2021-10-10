@@ -13,6 +13,7 @@ const Header = () => {
                     <Navbar.Brand href='/'>Firebase Auth</Navbar.Brand>
                     <Nav className="me-auto d-flex gap-3">
                         <Link className=' text-decoration-none text-success fw-bold' to='/home'>Home</Link>
+                        <Link className=' text-decoration-none text-success fw-bold' to='/privatepage'>Private Page</Link>
                         {user.email ?
                             <button onClick={LogOut} className=' text-decoration-none text-success fw-bold'>Log out</button> :
                             <div className='d-flex gap-3'>
